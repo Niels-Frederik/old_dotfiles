@@ -8,7 +8,7 @@ echo
 
 if [[ $input == "Y" || $input == "y" ]]; then
 	sudo pacman -Syu --noconfirm
-	sudo pacman -S chromium rofi polybar --noconfirm 
+	sudo pacman -S chromium rofi polybar oh-my-zsh --noconfirm 
 	yay -S ttf-iosevka --removemake --nocleanmenu --nodiffmenu --noeditmenu
 	sudo rm -rf ~/usr/share/conky
 	sudo rm -rf ~/usr/bin/start_conkey_grey
@@ -22,12 +22,14 @@ if [[ $input == "Y" || $input == "y" ]]; then
 	sudo rm -rf ~/.config/polybar
 	mkdir ~/.config/polybar
 	#sudo chown "$USER:$USER" ~/.config/polybar/config
+  sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi;
 yes | cp .Xresources ~
 yes | cp config ~/.i3/
 cp ./polybar/config ~/.config/polybar/
 yes | cp ./polybar/polybar_launch.sh ~/.config/polybar/
 yes | cp .vimrc ~
+chsh -s /bin/zsh
 xrdb ~/.Xresources
 i3-msg reload
 
